@@ -1,66 +1,66 @@
 import os, time, sys
+from modules import *
 
-def clear():
-    os.system("clear")
-
+netcheck()
 
 clear()
 
-if os.getuid() != 0:
-    print("Try with sudo !!")
-    sys.exit()
+def chx(cmd):
+    if os.path.isfile(cmd) == True:
+        pass
+    elif os.path.isfile(cmd) == False:
+        print(Kirmizi+'Please run setup.sh in "Etap-Yetkili" User ')
+        sys.exit()
+
+
+chx("/usr/bin/git")
+chx("/usr/bin/curl")
+chx("/usr/bin/wine")
 
 
 banner="""
 
                                         RiseTo Z-Book Downloader
                                         [A RiseToDev Script]
+                                        (Supported Fernus Base Z-Books)
 
 
-[1] Model Yayınları
-[2] Günay Yayınları
                                         
 """ 
 
+yayinlar = []   
 
-branch_banner="""
-
-[1] Turkish (Comming Soon)
-[2] Maths
-[3] Science
-
-
-"""
+def setup(pubname):
+    clear()
+    os.system("curl --insecure https://manage.frns.in/"+yayinlar[pubname]+"Kutuphane.fernus -o "+yayinlar[pubname]+"Kutuphane.fernus")
+    os.system("mv "+yayinlar[pubname]+"Kutuphane.fernus ~/.rz-books")
+    os.system("chmod 777 ~/.rz-books/"+yayinlar[pubname]+"Kutuphane.fernus")
+    os.system("link ~/.rz-books/"+yayinlar[pubname]+"Kitap ~/Masaüstü/"+yayinlar[pubname]+"Kutuphane.fernus")
 
 
-print(banner)
+print(AcikCamgobegi+banner)
 
-publishing = int(input("Choose A Publishing ===> "))
-
-while True:
-    if publishing != int:
-        print("Invalid Options Try Again !!")
-    elif publishing == 1:
-        os.system('curl --insecure https://gitlab.com/RiseToDev751/rise_to_z-book_downloader/-/raw/main/ModelKutuphane.fernus -o kitap_model.fernus')
-        os.system("mv ./kitap_model.fernus ~/")
-        os.system("link ~/kitap_model.fernus ~/Masaüstü")
-        break
-    elif publishing == 2:
-        clear()
-        print(branch_banner)
-        branch = int(input("Choose A Branch ===> "))
-        if branch != int:
-            print("Invalid Options Try Again !!")
-        elif branch == 2:
-            os.system('curl --insecure https://gitlab.com/RiseToDev751/rise_to_z-book_downloader/-/raw/main/matgunay.fernus -o kitap_matgunay.fernus')
-            os.system("mv ./kitap_matgunay.fernus ~/")
-            os.system("link ~/kitap_matgunay.fernus ~/Masaüstü")
+file = open("pubname.py","r")
+sayac = 0
+for i in file:
+    while True:
+        txt = file.readline()
+        name = txt.split(" =")
+        yayinlar.append(name[0])
+        print("[",sayac,"]"+name[0]+" Yayınları")
+        if sayac == 17:
             break
-        elif branch == 3:
-            os.system('curl --insecure https://gitlab.com/RiseToDev751/rise_to_z-book_downloader/-/raw/main/GunayKutuphane.fernus -o kitap_fengunay.fernus')
-            os.system("mv ./kitap_fengunay.fernus ~/")
-            os.system("link ~/kitap_fengunay.fernus ~/Masaüstü")
-            break
-            
+        sayac+=1
+publishing = int(input(Kirmizi+"Choose A Publishing ===> "))
+
+value = 0
+
+for i in yayinlar:
+    value+=1
 
 
+if publishing <= value:
+    setup(publishing)
+else: 
+    print(Kirmizi+"Please! Type Correct Options")
+    exit()
