@@ -4,6 +4,7 @@ from modules import *
 netcheck()
 
 clear()
+os.mkdir("~/.rz-books")
 
 def chx(cmd):
     if os.path.isfile(cmd) == True:
