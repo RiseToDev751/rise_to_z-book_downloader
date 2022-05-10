@@ -49,9 +49,9 @@ for i in file:
         name = txt.split(" =")
         yayinlar.append(name[0])
         print("[",sayac,"]"+name[0]+" Yayınları")
-        if sayac == 17:
-            break
         sayac+=1
+        if sayac == 19:
+            break
 publishing = int(input(Kirmizi+"Choose A Publishing ===> "))
 
 value = 0
