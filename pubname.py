@@ -1,4 +1,5 @@
-HiperZeka = "HiperzekaKutuphane.fernus"
+
+Hiperzeka = "HiperzekaKutuphane.fernus"
 Gunay = "GunayKutuphane.fernus"
 Hiz = "HizKutuphane.fernus"
 Ankara = "AnkaraKutuphane.fernus"
