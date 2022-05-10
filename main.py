@@ -36,7 +36,7 @@ def setup(pubname):
     os.system("curl --insecure https://manage.frns.in/"+yayinlar[pubname]+"Kutuphane.fernus -o "+yayinlar[pubname]+"Kutuphane.fernus")
     os.system("mv "+yayinlar[pubname]+"Kutuphane.fernus ~/.rz-books")
     os.system("chmod 777 ~/.rz-books/"+yayinlar[pubname]+"Kutuphane.fernus")
-    os.system("link ~/.rz-books/"+yayinlar[pubname]+"Kitap ~/Masaüstü/"+yayinlar[pubname]+"Kutuphane.fernus")
+    os.system("link ~/.rz-books/"+yayinlar[pubname]+"Kutuphane.fernus ~/Masaüstü/"+yayinlar[pubname]+"Kitap")
 
 
 print(AcikCamgobegi+banner)
