@@ -50,7 +50,7 @@ for i in file:
         yayinlar.append(name[0])
         print("[",sayac,"]"+name[0]+" Yayınları")
         sayac+=1
-        if sayac == 19:
+        if sayac == 20:
             break
 publishing = int(input(Kirmizi+"Choose A Publishing ===> "))
 
